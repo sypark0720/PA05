@@ -13,6 +13,7 @@ public class Main {
 	private static final int START = 2;
 
 	public static void main(String[] args){
+		System.out.println("input command(start linear 1 0 0/insert 1003/ find 9050)");
 		Scanner scanner = new Scanner(System.in);
 		HashTable hashtable = new HashTable(TableSize);
 		while(scanner.hasNext()){
@@ -27,25 +28,25 @@ public class Main {
 			switch(getCommandNum(cmd)){
 			case INSERT:
 				value = i_scanner.nextInt();
-								
-				// fill your code			
-				
+				int InsertReturnVal = hashtable.Insert(value);		
+				System.out.println("INSERT: "+InsertReturnVal);
 				break;
 			case FIND:
 				value = i_scanner.nextInt();
-				
-				// fill your code
-				
+				hashtable.find(value);		
+				int findReturnVal = hashtable.find(value);	
+				if(findReturnVal < 0) System.out.println("Cannot Find");
+				else System.out.println("FIND: "+ findReturnVal);
 				break;
 			case START:
 				type = i_scanner.next();
 				c1 = i_scanner.nextInt();
 				c2 = i_scanner.nextInt();
 				c3 = i_scanner.nextInt();
-				
-				// fill your code
-				
+				hashtable.Start(type, c1, c2, c3);				
 				break;
+			case ERROR:
+				System.out.println("error: please input correct command");
 			
 			}
 			i_scanner.close();
